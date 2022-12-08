@@ -20,7 +20,8 @@ function fighterAttack() {
                 let num2 = Math.floor(Math.random() * 12) + 1;
                 let fighterRoundDmg = document.getElementById('warrior-dmg-value').textContent = num2;
                 roundResult();
-                setTimeout(() => alert('You hit! You did ' +num2+ ' damage!'), 500);
+                let roundDmg = document.getElementById('enemy-health-value').innerHTML
+                setTimeout(() => alert('You hit! You did ' +num2+ ' damage! The goblin only has ' +roundDmg+ ' health left!'), 500);
                 roundUp();
             } else {
                 alert('You missed! Now it is the enemies turn!');
