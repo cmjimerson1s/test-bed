@@ -1,33 +1,45 @@
-// let num1 = Math.floor(Math.random() * 25) + 1;
-// let num2 = Math.floor(Math.random() * 25) + 1;
-// let maths = (num1 / num2);
+const acRate = 16;
+const acRateGoblin = 8;
 
 
-// if (result = 0){
-//     do {
-//         let num1 = Math.floor(Math.random() * 25) + 1;
-//         let num2 = Math.floor(Math.random() * 25) + 1;
-//         let math2 = (num1 / num2);
-//     } 
-//     while (result = 0);
-//     document.getElementById('maths').innerText = "1";
-// } else {
-//     document.getElementById('maths').innerText = maths;
+let round = parseInt(document.getElementById('round-count').innerText);
+
+document.addEventListener('DOMContentLoaded', gameStart);
+
+document.getElementById('dice-roll-attk').addEventListener('click', fighterAttack);
+
+function gameStart () {
+    let round = 0;
+}
+
+function fighterAttack() {
+        let num1 = Math.floor(Math.random() * 20) + 1;
+        let warriorRoll = document.getElementById('warrior-dice-value').textContent = num1;
+        let roundHealth = parseInt(document.getElementById('enemy-health-value').innerText);
+            if(warriorRoll >= acRateGoblin) {
+                let num2 = Math.floor(Math.random() * 12) + 1;
+                let fighterRoundDmg = document.getElementById('warrior-dmg-value').textContent = num2;
+                roundResult();
+                setTimeout(() => alert('You hit! You did ' +num2+ ' damage!'));
+                document.getElementById('round-count').innerText = ++round;
+            }
+}
+
+function roundResult (roundHealth, fighterRoundDmg ) {
+
+    let roundDmg = ((parseInt(document.getElementById('enemy-health-value').innerText)) - (parseInt(document.getElementById('warrior-dmg-value').innerText)));
+    document.getElementById('enemy-health-value').innerHTML = roundDmg;
+
+}
+
+
+// function dmgRoll() {
+//     let num2 = Math.floor(Math.random() * 12) + 1;
+//     document.getElementById('warrior-dmg-value').textContent = num2
 // }
 
-// if (Number.isInteger(maths)) {
-//     document.getElementById('maths').innerText = maths;
-let num1 = 10
-let num2 = 2
-let holder = 1
+// document.getElementById('round-count').innerText = ++round;
 
-if (holder === 3) {
-    document.getElementById('maths').innerText = holder;
-
-} else {
-    do { 
-       (num1 + num2) 
-    }    
-    while(holder < 5);
-    document.getElementById('maths').innerText = num1;
-}
+// function roundResult () {
+//     alert(`You hit! You did ${num2} damage!`);
+// }
