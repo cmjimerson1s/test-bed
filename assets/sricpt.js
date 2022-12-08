@@ -20,14 +20,17 @@ function fighterAttack() {
                 let num2 = Math.floor(Math.random() * 12) + 1;
                 let fighterRoundDmg = document.getElementById('warrior-dmg-value').textContent = num2;
                 roundResult();
-                setTimeout(() => alert('You hit! You did ' +num2+ ' damage!'));
-                document.getElementById('round-count').innerText = ++round;
+                setTimeout(() => alert('You hit! You did ' +num2+ ' damage!'), 500);
+                roundUp();
+            } else {
+                alert('You missed! Now it is the enemies turn!');
+                roundUp();
             }
 }
 
-function roundResult (roundHealth, fighterRoundDmg ) {
+function roundResult ( ) {
 
-    let roundDmg = ((parseInt(document.getElementById('enemy-health-value').innerText)) - (parseInt(document.getElementById('warrior-dmg-value').innerText)));
+    let roundDmg = (Math.max(0, ((parseInt(document.getElementById('enemy-health-value').innerText)) - (parseInt(document.getElementById('warrior-dmg-value').innerText)))));
     document.getElementById('enemy-health-value').innerHTML = roundDmg;
 
 }
@@ -40,6 +43,6 @@ function roundResult (roundHealth, fighterRoundDmg ) {
 
 // document.getElementById('round-count').innerText = ++round;
 
-// function roundResult () {
-//     alert(`You hit! You did ${num2} damage!`);
-// }
+function roundUp () {
+    document.getElementById('round-count').innerText = ++round;
+}
